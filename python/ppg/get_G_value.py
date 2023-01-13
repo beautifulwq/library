@@ -1,5 +1,7 @@
 import numpy as np
 import cv2 as cv
+import  os
+from scipy.signal import savgol_filter
 import numpy as np
 from scipy.signal import find_peaks
 from matplotlib import pyplot as plt
@@ -71,6 +73,8 @@ def plotGofRGB(rgb,num):
     pltXLabel = 'Frame'
     pltYLabel = 'Received Lumen Value'
     plt.plot(rgb[:],color=color,label=str(color))
+    y = savgol_filter(rgb, 5, 3, mode='nearest')
+    plt.plot(y, 'red', label='savgol')
     plt.legend(loc='upper right')
     plt.gca().set(title=pltTitle,xlabel=pltXLabel,ylabel=pltYLabel)
     plt.show()
