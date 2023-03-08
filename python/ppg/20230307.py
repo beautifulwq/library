@@ -1,3 +1,4 @@
+import colorama
 from pathlib import Path
 import os
 import scipy
@@ -13,8 +14,27 @@ import scipy.signal as signal
 # print("\033[33m这是黄色字体\033[0m")
 # print("\033[34m这是蓝色字体\033[0m")
 # print("\033[38m这是默认字体\033[0m")  # 大于37将显示默认字体
+colorama.init(autoreset=True)
 
-print("\033[32mWELCOM TO    USE\n-----------------------------------\033[0m")
+def check_dir_exist_sub(pathtocheck):
+    if(Path.exists(pathtocheck)):
+        pass
+        
+    else:
+        print("\033[32mWELCOME TO    USE\n-----------------------------------\033[0m")
+        print("\033[31minitialization...\033[0m")
+        
+        Path.mkdir(pathtocheck)
+
+        print("\033[31mplease drag .mp4 file into videofile and restart\033[0m")
+        input('\033[32mPress any key to quit program.\033[0m')
+        os._exit(0)
+
+pa2=Path('videofile')
+
+check_dir_exist_sub(pa2)
+
+print("\033[32mWELCOME TO    USE\n-----------------------------------\033[0m")
 print("CONTINUE     \033[31mY\033[0m       QUIT    \033[31mN\033[0m\n")
 
 select=input("select: ")
